@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-bitacora": {
+      "hosting": {
+        "kanban-fire": [
+          "angular-bitacora"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-bitacora"
+  }
+}
