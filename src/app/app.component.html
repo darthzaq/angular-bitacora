@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
-  <mat-icon>local_fire_department</mat-icon>
-  <span>Kanban Fire</span>
+<mat-toolbar>
+  <mat-icon>psychology</mat-icon>
+  <span>Bitcora</span>
 </mat-toolbar>
 <div class="content-wrapper">
   <button (click)="newTask()" mat-button>
@@ -20,7 +20,7 @@
         [cdkDropListConnectedTo]="[inProgressList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="list">
-        <p class="empty-label" *ngIf="(inProgress | async)?.length === 0">Empty list</p>
+        <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
         <app-task (edit)="editTask('inProgress', $event)" *ngFor="let task of todo | async" cdkDrag [task]="task"></app-task>
       </mat-card>
     </div>

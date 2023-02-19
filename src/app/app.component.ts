@@ -4,7 +4,7 @@ import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent, TaskDialogResult } from './task-dialog/task-dialog.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { forkJoin, Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -42,24 +42,37 @@ export class AppComponent {
     if (event.previousContainer === event.container) {
       return;
     }
-    forkJoin([event.previousContainer.data, event.container.data]).subscribe(results => {
-      const previousContainer = results[0];
-      const container = results[0];
 
-      const prevItem = previousContainer[event.previousIndex];
+    let previousContainer: Task[];
+    let container: Task[];
 
-      this.store.firestore.runTransaction(() => {
-        return Promise.all([
-          this.store.collection(event.previousContainer.id).doc(prevItem.id).delete(),
-          this.store.collection(event.container.id).add(prevItem),
-        ]);
-      });
-      transferArrayItem(
-        previousContainer,
-        container,
-        event.previousIndex,
-        event.currentIndex
-      );
+    const updateData = () => {
+      if (previousContainer && previousContainer.length && container) {
+        const prevItem = previousContainer[event.previousIndex];
+
+        this.store.firestore.runTransaction(() => {
+          return Promise.all([
+            this.store.collection(event.previousContainer.id).doc(prevItem.id).delete(),
+            this.store.collection(event.container.id).add(prevItem),
+          ]);
+        });
+        transferArrayItem(
+          previousContainer,
+          container,
+          event.previousIndex,
+          event.currentIndex
+        );
+      }
+    }
+
+    event.previousContainer.data.pipe(take(1)).subscribe((data) => {
+      previousContainer = data;
+      updateData();
+    });
+
+    event.container.data.pipe(take(1)).subscribe((data) => {
+      container = data;
+      updateData();
     });
   }
 
