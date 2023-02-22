@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor() {}
+
+  sections: string[] = ["ToDo", "Payments"];
+  section: string = "ToDo";
+
+  changeSection = (nextSection: string) => {
+    this.section = nextSection;
+  }
+
 }

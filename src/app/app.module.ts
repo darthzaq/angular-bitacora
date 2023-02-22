@@ -25,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TodoScreenComponent } from './todo-screen/todo-screen.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,12 @@ import { TodoScreenComponent } from './todo-screen/todo-screen.component';
   imports: [
     AngularFireModule.initializeApp({
       apiKey: environment.firebaseConfig.apiKey,
-      authDomain:  environment.firebaseConfig.authDomain,
-      projectId:  environment.firebaseConfig.projectId,
-      storageBucket:  environment.firebaseConfig.storageBucket,
-      messagingSenderId:  environment.firebaseConfig.messagingSenderId,
-      appId:  environment.firebaseConfig.appId,
-      measurementId:  environment.firebaseConfig.measurementId,
+      authDomain: environment.firebaseConfig.authDomain,
+      projectId: environment.firebaseConfig.projectId,
+      storageBucket: environment.firebaseConfig.storageBucket,
+      messagingSenderId: environment.firebaseConfig.messagingSenderId,
+      appId: environment.firebaseConfig.appId,
+      measurementId: environment.firebaseConfig.measurementId,
     }),
     AngularFirestoreModule,
 
@@ -56,6 +57,7 @@ import { TodoScreenComponent } from './todo-screen/todo-screen.component';
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
