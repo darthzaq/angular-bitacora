@@ -26,13 +26,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TodoScreenComponent } from './todo-screen/todo-screen.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
     TaskDialogComponent,
-    TodoScreenComponent
+    TodoScreenComponent,
+    PaymentsComponent
   ],
   imports: [
     AngularFireModule.initializeApp({

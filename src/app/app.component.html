@@ -10,4 +10,5 @@
     </ng-template>
   </span>
 </mat-toolbar>
-<app-todo-screen></app-todo-screen>
+<app-todo-screen *ngIf="this.section === 'ToDo'"></app-todo-screen>
+<app-payments *ngIf="this.section === 'Payments'"></app-payments>
