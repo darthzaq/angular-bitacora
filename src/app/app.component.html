@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-icon>psychology</mat-icon>
-  <span>Bitcora</span>
+  <span class="title">Bitcora</span>
   <span *ngFor="let sectionOption of this.sections">
     <button *ngIf="sectionOption === this.section; else sectionNotSelected" mat-raised-button color="primary" (click)="changeSection(sectionOption)">
       {{sectionOption}}
