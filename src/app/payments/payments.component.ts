@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Task } from '../task/task';
-import { TaskDialogComponent, TaskDialogResult } from '../task-dialog/task-dialog.component';
+import { ItemDialogPaymentComponent, ItemPaymentDialogResult } from '../item-dialog-payment/item-dialog-payment.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
@@ -17,7 +16,7 @@ export class PaymentsComponent implements OnInit {
   }
 
   newItem(): void {
-    const dialogRef = this.dialog.open(TaskDialogComponent, {
+    const dialogRef = this.dialog.open(ItemDialogPaymentComponent, {
       width: '270px',
       data: {
         task: {},
@@ -25,11 +24,11 @@ export class PaymentsComponent implements OnInit {
     });
     dialogRef
       .afterClosed()
-      .subscribe((result: TaskDialogResult|undefined) => {
+      .subscribe((result: ItemPaymentDialogResult|undefined) => {
         if (!result) {
           return;
         }
-        this.store.collection('todo').add(result.task);
+        this.store.collection('todo').add(result.itemPayment);
       });
   }
 }

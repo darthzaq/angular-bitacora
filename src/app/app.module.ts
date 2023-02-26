@@ -27,6 +27,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TodoScreenComponent } from './todo-screen/todo-screen.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PaymentsComponent } from './payments/payments.component';
+import { ItemPaymentComponent } from './item-payment/item-payment.component';
+import { ItemDialogPaymentComponent } from './item-dialog-payment/item-dialog-payment.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { PaymentsComponent } from './payments/payments.component';
     TaskComponent,
     TaskDialogComponent,
     TodoScreenComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    ItemPaymentComponent,
+    ItemDialogPaymentComponent
   ],
   imports: [
     AngularFireModule.initializeApp({
